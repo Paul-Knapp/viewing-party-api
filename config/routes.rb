@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   namespace :api do
     namespace :v1 do
-      get 'movies/top_rated', to: 'movies#top_rated'
+      get '/movies/top_rated', to: 'movies#top_rated'
       resources :users, only: [:create, :index]
       resources :sessions, only: :create
     end
