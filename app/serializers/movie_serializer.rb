@@ -1,4 +1,4 @@
 class MovieSerializer
   include JSONAPI::Serializer
-  attributes :type, :title, :vote_average
+  attributes :title, :vote_average
 end
