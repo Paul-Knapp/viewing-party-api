@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       get '/movies/top_rated', to: 'movies#top_rated'
-      get '/movies/search', to: 'movies#index'
+      get '/movies/search', to: 'movies#search'
       resources :users, only: [:create, :index]
       resources :sessions, only: :create
     end
