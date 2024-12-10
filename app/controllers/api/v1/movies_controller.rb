@@ -1,9 +1,17 @@
-module Api
-  module V1
-    class MoviesController < ApplicationController
+class Api::V1::MoviesController < ApplicationController
       def top_rated
         movies = MovieGateway.get_top_rated_movies
         render json: format_response(movies)
+      end
+
+      def search
+        query = params[:q]
+        if query.present?
+          movies = MovieGateway.search_movies(query)
+          render json: format_response(movies)
+        else
+          render json: { error: "Search query is required" }, status: :bad_request
+        end
       end
 
       private 

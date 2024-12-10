@@ -6,10 +6,11 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  root "posts#index"
+  # root "posts#index"
   namespace :api do
     namespace :v1 do
       get '/movies/top_rated', to: 'movies#top_rated'
+      get '/movies/search', to: 'movies#index'
       resources :users, only: [:create, :index]
       resources :sessions, only: :create
     end
