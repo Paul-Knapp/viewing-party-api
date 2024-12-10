@@ -30,6 +30,4 @@ class Api::V1::MoviesController < ApplicationController
           end
         }
       end
-    end
-  end
 end
