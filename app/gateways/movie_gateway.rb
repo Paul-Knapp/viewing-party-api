@@ -4,7 +4,7 @@ class MovieGateway
   BASE_URL = "https://api.themoviedb.org/3"
 
   def self.get_top_rated_movies
-    response = connection.get("/3/movie/top_rated") do |req|
+    response = connection.get("/movie/top_rated") do |req|
       req.params = {
         api_key: Rails.application.credentials.tmdb[:api_key],
         page: 1
@@ -28,6 +28,3 @@ class MovieGateway
     end
   end
 end
-
-
-
