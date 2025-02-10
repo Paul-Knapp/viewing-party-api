@@ -2,10 +2,10 @@ require 'faraday'
 require 'json'
 class MovieGateway
 
-    BASE_URL = 'https://api.themoviedb.org/3'
+    BASE_URL = 'https://api.themoviedb.org'
 
     def self.get_top_rated_movies
-        response = connection.get("/movie/top_rated") do |req|
+        response = connection.get("/3/movie/top_rated") do |req|
           req.params = { 
             page: 1,
             language: 'en-US',
