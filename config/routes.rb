@@ -12,8 +12,8 @@ Rails.application.routes.draw do
       resources :users, only: [:create, :index]
       resources :sessions, only: :create
       resources :viewing_parties, only: [:create]
-      get 'movies/top_rated', to: 'movies#top_rated'
-      get 'movies/search', to: 'movies#search'
+      get 'movies/top_rated', to: 'movies#top_rated' #possible refactor depending on usage
+      get 'movies/search', to: 'movies#search' #same as above
     end
   end
 end
