@@ -34,7 +34,7 @@ class MovieGateway
             page: 1
           }
         end
-        puts "Request URL: #{response.env.url}" #should show me url being called
+        puts "Request URL: #{response.env.url}" #should show me url being called this error handling is copied from the get_top_rated_movies method
         if response.status == 200 
             JSON.parse(response.body)['results']
         elsif response.status == 404

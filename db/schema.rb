@@ -14,33 +14,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_10_213209) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "parties", force: :cascade do |t|
-    t.string "name"
-    t.string "start_time"
-    t.string "end_time"
-    t.string "movie_id"
-    t.string "movie_title"
-    t.string "host_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "parties_users", id: false, force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "party_id", null: false
-    t.index ["party_id", "user_id"], name: "index_parties_users_on_party_id_and_user_id"
-    t.index ["user_id", "party_id"], name: "index_parties_users_on_user_id_and_party_id"
-  end
-
-  create_table "user_parties", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "party_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["party_id"], name: "index_user_parties_on_party_id"
-    t.index ["user_id"], name: "index_user_parties_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "username"
@@ -73,8 +46,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_10_213209) do
     t.index ["viewing_party_id"], name: "index_viewing_party_users_on_viewing_party_id"
   end
 
-  add_foreign_key "user_parties", "parties"
-  add_foreign_key "user_parties", "users"
   add_foreign_key "viewing_party_users", "users"
   add_foreign_key "viewing_party_users", "viewing_parties"
 end
