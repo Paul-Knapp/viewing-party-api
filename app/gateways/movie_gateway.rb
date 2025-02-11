@@ -27,14 +27,21 @@ class MovieGateway
 
 
     def self.search_movies(query)
-        response = connection.get("/search/movie") do |req|
+        response = connection.get("/3/search/movie") do |req|
           req.params = {
             api_key: Rails.application.credentials.tmdb[:api_key],
             query: query,
             page: 1
           }
         end
-        JSON.parse(response.body)['results']
+        puts "Request URL: #{response.env.url}" #should show me url being called
+        if response.status == 200 
+            JSON.parse(response.body)['results']
+        elsif response.status == 404
+            raise StandardError, "Resource not found status: #{response.status}"
+        else
+            raise StandardError, "Unexpected response status: #{response.status}"
+        end
     end
 
 
